@@ -77,7 +77,7 @@ class MySAGEConv(MessagePassing):
         if self.project and hasattr(self, 'lin'):
             x = (self.lin(x[0]).relu(), x[1])
 
-        # propagate_type: (x: OptPairTensor)
+        # propagate_type: (x: OptPairTensor, xe: Optional[Tensor])
         out = self.propagate(edge_index, x=x, size=size, xe=edge_attr)
         out = self.lin_l(out)
 
